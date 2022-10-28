@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<br lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="StyleSheet" href="StyleSheetRU.css"/>
+    <title></title>
+    <link rel="stylesheet" href="resources/css/styleRegistro.css">
+ 
+</head>
+<body>
+    <div class="contenedor">
+
+        <h1>Registro de usuario</h1>
+        <h2>Por favor diligenciar todos los datos de registro</h2>
+        <form id="forma" name="forma" method="POST">
+
+            <div class="elemento">
+
+                <label for="nombre">nombre</label>
+                <input type="text" id="nombre" name="nombre" required="true"/>
+
+                </div>
+                <div class="elemento">
+                    <label for="apellido">apellido</label>
+                    <input type="text" id="apellido" name="apellido" required="true"/>
+                    </div>
+                    <div class="elemento">
+                        <label for="cargo">cargo</label>
+                        <input type="text" id="cargo" name="cargo" required="true"/>
+                        </div>
+
+                        <div class="elemento">
+                            <label for="nombreuser">Nombre de usuario</label>
+                            <input type="text" id="nombreuser" name="nombreuser" required="true"/>
+                            </div>
+                            <div class="elemento">
+
+                                <label for="password">Contraseña</label>
+                                <input type="password" id="password" name="password" required=true/>
+                                <div class="elemento">
+ 
+                                    <div class="elemento2">
+                                        <input type="submit"  value="REGISTRAR USUARIO">
+                                    </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <% if(typeof alert != "undefined") {%>
+        <script>
+
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                Text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location='login <%= ruta %>'
+            })
+
+        </script>
+        <% } %>
+</body>
+</html>
