@@ -46,6 +46,8 @@ app.get('/register', (req, res) => {
     res.render('register')
 });
 
+//registro
+
 app.post('/register', async (req, res)=>{
 
     const nombre = req.body.nombre;
@@ -74,6 +76,28 @@ app.post('/register', async (req, res)=>{
 
 })
 
+//autenticacion
+
+app.post('/login', async (req, res)=>{ 
+
+    const usuario = req.body.usuario;
+    const password = req.body.password;
+    if(usuario && password){
+
+        connection.query('SELECT * FROM usuarios WHERE usuario = ?', [usuario], async(error, results)=>{
+
+            if(results.lenght == 0 || !(await bcryptjs.compare(password, results[0].password))){
+
+                res.send('USUARIO INCORRECTO PA, QUE TE PASA');
+
+            }else{
+                res.send('BIENVENIDO MI PP');
+            }
+        })
+    }
+
+
+})
 
 app.listen(3000, (req, res) => {
 
