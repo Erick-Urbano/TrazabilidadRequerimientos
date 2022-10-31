@@ -78,15 +78,16 @@ app.post('/register', async (req, res)=>{
 
 //autenticacion
 
-app.post('/login', async (req, res)=>{ 
+app.post('/auth', async (req, res)=>{ 
 
     const usuario = req.body.usuario;
     const password = req.body.password;
+    let passwordHaash = await bcryptjs.hash(password,8);
     if(usuario && password){
 
         connection.query('SELECT * FROM usuarios WHERE usuario = ?', [usuario], async(error, results)=>{
 
-            if(results.lenght == 0 || !(await bcryptjs.compare(password, results[0].password))){
+            if(results.lenght == 0 || !(await bcryptjs.compare(password, results[0].contrasena))){
 
                 res.send('USUARIO INCORRECTO PA, QUE TE PASA');
 
