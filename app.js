@@ -92,7 +92,7 @@ app.post('/auth', async (req, res)=>{
                 res.send('USUARIO INCORRECTO PA, QUE TE PASA');
 
             }else{
-                res.send('BIENVENIDO MI PP');
+                res.send('Bienvenido ' + usuario);
             }
         })
     }
