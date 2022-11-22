@@ -3,12 +3,12 @@ const router = express.Router();
 
 const conexion = require('./database/db');
 
-router.get('/', (req, res)=>{     
+router.get('/tabla', (req, res)=>{     
     conexion.query('SELECT * FROM tareasrealizar',(error, results)=>{
         if(error){
             throw error;
         } else {                       
-            res.render('tabla.ejs', {results:results});            
+            res.render('tabla', {results:results});            
         }   
     })
 })
@@ -16,6 +16,7 @@ router.get('/', (req, res)=>{
 router.get('/create', (req,res)=>{
     res.render('create');
 })
+
 
 router.get('/edit/:id', (req,res)=>{    
     const id = req.params.id;

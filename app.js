@@ -46,7 +46,6 @@ app.get('/register', (req, res) => {
     res.render('register')
 });
 
-//registro
 
 app.post('/register', async (req, res)=>{
 

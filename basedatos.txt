@@ -1,0 +1,10 @@
+create table tareasrealizar (
+id int auto_increment primary key,
+encargado varchar (100),
+requerimiento varchar (150),
+prioridad varchar (50),
+desarrollador varchar (100),
+estado varchar(50),
+fechaentrega date
+)
+
