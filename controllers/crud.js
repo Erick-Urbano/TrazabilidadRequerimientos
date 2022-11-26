@@ -16,7 +16,7 @@ exports.save = (req, res)=>{
             console.log(error);
         }else{
             //console.log(results);   
-            res.redirect('/');         
+            res.redirect('/tabla');         
         }
 });
 };
@@ -35,7 +35,41 @@ exports.update = (req, res)=>{
         if(error){
             console.log(error);
         }else{           
-            res.redirect('/');         
+            res.redirect('/tabla');         
         }
 });
 };
+
+
+exports.guardar = (req, res)=>{
+
+    const id2 = req.body.id2;
+    const texto = req.body.texto;
+    const descripcion = req.body.descripcion;
+  
+  
+    conexion.query('INSERT INTO tareas SET ?',{texto:texto, descripcion:descripcion}, (error, results)=>{
+        if(error){0
+            console.log(error);
+        }else{
+            //console.log(results);   
+            res.redirect('/tarea');         
+        }
+  });
+  };
+  //ACTUALIZAR un REGISTRO
+  exports.actualizar = (req, res)=>{
+  
+    const id2 = req.body.id2;
+    const texto = req.body.texto;
+    const descripcion = req.body.descripcion;
+  
+    conexion.query('UPDATE tareas SET ? WHERE id2 = ?',[{texto:texto, descripcion:descripcion}, id2], (error, results)=>{
+        if(error){
+            console.log(error);
+        }else{           
+            res.redirect('/tarea');         
+        }
+  });
+  };
+

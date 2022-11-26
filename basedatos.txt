@@ -8,3 +8,10 @@ estado varchar(50),
 fechaentrega date
 )
 
+lista tareas
+
+create table tareas (
+id2 int auto_increment primary key,
+texto varchar (100),
+descripcion varchar (150)
+)

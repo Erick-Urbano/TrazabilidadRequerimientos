@@ -101,6 +101,7 @@ app.post('/auth', async (req, res)=>{
 
 app.use('/', require('./router'));
 
+
 app.listen(3000, (req, res) => {
 
     console.log('SERVER RUNNIN IN http://localhost:3000/login');

@@ -24,7 +24,7 @@ router.get('/edit/:id', (req,res)=>{
         if (error) {
             throw error;
         }else{            
-            res.render('edit.ejs', {encargado:results[0]});            
+            res.render('edit', {encargado:results[0]});            
         }        
     });
 });
@@ -35,7 +35,7 @@ router.get('/delete/:id', (req, res) => {
         if(error){
             console.log(error);
         }else{           
-            res.redirect('/');         
+            res.redirect('/tabla');         
         }
     })
 });
@@ -44,5 +44,49 @@ const crud = require('./controllers/crud');
 
 router.post('/save', crud.save);
 router.post('/update', crud.update);
+
+
+
+router.get('/tarea', (req, res)=>{     
+    conexion.query('SELECT * FROM tareas',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                       
+            res.render('tarea', {results:results});            
+        }   
+    })
+})
+
+router.get('/crear', (req,res)=>{
+    res.render('crear');
+})
+
+
+router.get('/editar/:id2', (req,res)=>{    
+    const id2 = req.params.id2;
+    conexion.query('SELECT * FROM tareas WHERE id2=?',[id2] , (error, results) => {
+        if (error) {
+            throw error;
+        }else{            
+            res.render('editar', {texto:results[0]});            
+        }        
+    });
+});
+
+router.get('/borrar/:id2', (req, res) => {
+    const id2 = req.params.id2;
+    conexion.query('DELETE FROM tareas WHERE id2 = ?',[id2], (error, results)=>{
+        if(error){
+            console.log(error);
+        }else{           
+            res.redirect('/tarea');         
+        }
+    })
+});
+
+/*const crud2 = require('./controllers/crud2');*/
+
+router.post('/guardar', crud.guardar);
+router.post('/actualizar', crud.actualizar);
 
 module.exports = router;
