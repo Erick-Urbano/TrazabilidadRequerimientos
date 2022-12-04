@@ -84,7 +84,6 @@ router.get('/borrar/:id2', (req, res) => {
     })
 });
 
-/*const crud2 = require('./controllers/crud2');*/
 
 router.post('/guardar', crud.guardar);
 router.post('/actualizar', crud.actualizar);
